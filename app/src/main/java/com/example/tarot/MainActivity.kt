@@ -41,14 +41,7 @@ class MainActivity : ComponentActivity() {
         if (month < 10)
             date = "$day.0$month.$year"
         setContent {
-        //    var screen = remember{mutableStateOf(0)}
             var num = remember { mutableStateOf(0) }
-//            when (screen.value){
-//                0 -> MainScreen(date = date, screen)
-//                1 -> {random(num)
-//                    cartPage(date = date, screen, num.value)}
-//                2 -> details(date = date, screen, num.value)
-//            }
             Navigation.Navigate(date = date, num = num)
 
 
@@ -56,73 +49,5 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//fun random(num: MutableState<Int>){
-//    num.value = kotlin.random.Random.nextInt(0, 23)
-//}
-
-
-@Composable
-fun cart(date: String){
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(background),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 20.dp), horizontalArrangement = Arrangement.Absolute.Left){
-            Image(
-                painter = painterResource(id = R.drawable.img),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(50.dp, 60.dp)
-                    .clickable(onClick = {})
-            )
-        }
-        Box(modifier = Modifier.fillMaxWidth()) {
-            Text(
-                text = date,
-                textAlign = TextAlign.Center,
-                color = Color.White,
-                fontSize = 18.sp,
-                modifier = Modifier
-                    .fillMaxWidth()
-
-            )
-            Text(
-                text = "Ваша карта дня",
-                textAlign = TextAlign.Center,
-                color = Color.White,
-                fontSize = 34.sp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 50.dp)
-            )
-        }
-        Box(modifier = Modifier
-            .fillMaxWidth()
-            .padding(25.dp), contentAlignment = Alignment.Center){
-            Image(
-                painter = painterResource(id = R.drawable.cart1),
-                contentDescription = null,
-                modifier = Modifier
-                    .size(250.dp, 450.dp)
-            )
-        }
-        Column(horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 40.dp)) {
-            Text("Подробнее...", color = Color.White, fontSize = 20.sp, modifier = Modifier.clickable(onClick = {}))
-        }
-    }
-}
-
-@Preview
-@Composable
-fun preview(){
-    cart(date = "DATA")
-}
 
 
